@@ -8,7 +8,7 @@ df['Title'] = df['Name'].apply(lambda x: x.split(',')[1].split('.')[0].strip())
 df['FamSize'] = df['Parch'] + df['SibSp']
 
 decks_df = df['Cabin'].str.extract('(?P<Deck>\w)(?P<CabinNumber>\d+)')
-deck_dummies = pd.get_dummies(df['Deck'], prefix='Deck')
+deck_dummies = pd.get_dummies(decks_df['Deck'], prefix='Deck')
 title_dummies = pd.get_dummies(df['Title'])
 gender_dummies = pd.get_dummies(df['Sex'])
 class_dummies = pd.get_dummies(df['Pclass'], prefix='Class')
